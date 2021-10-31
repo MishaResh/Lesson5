@@ -5,4 +5,16 @@
 #
 # Иванов 23543.12
 # Петров 13749.32
-
+sch = 1
+summ = 0
+with open("New_S.txt", encoding='utf-8') as my_file:
+    if my_file.readable():
+        print('Список сотрудников с зарплатой ниже 20 000,00')
+        for line in my_file:
+            sch += 1
+            summ += float(line.replace('\n', '').split(' ')[1])
+            if float(line.replace('\n', '').split(' ')[1]) < 20000:
+                print(line.replace('\n', '').split(' ')[0])
+    else:
+        print("Ошибка чтения файла")
+    print(f'Средняя зарплата сотрудников = {round(summ / sch, 2)}')
